@@ -43,10 +43,19 @@
 
     <ItemGroup>
         <!-- App Icon -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4"/>
+        <MauiIcon
+            Include="Resources\AppIcon\appicon.svg"
+            TintColor="White"
+            Color="#0c820a"
+            ForegroundScale="0.45"/>
 
         <!-- Splash Screen -->
-        <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128"/>
+        <MauiSplashScreen
+            Include="Resources\AppIcon\appicon.svg"
+            TintColor="White"
+            Color="#0c820a"
+            BaseSize="2000,2000"
+            Resize="True"/>
 
         <!-- Images -->
         <MauiImage Include="Resources\Images\*"/>
@@ -60,8 +69,17 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
+        <PackageReference Include="CommunityToolkit.Maui.Core" Version="11.2.0" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)"/>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Helpers\" />
+      <Folder Include="ViewModels\Entities\" />
+      <Folder Include="Views\ContentViews\" />
     </ItemGroup>
 
 </Project>

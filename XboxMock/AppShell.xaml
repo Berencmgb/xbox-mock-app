@@ -3,13 +3,24 @@
     x:Class="XboxMock.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:XboxMock.Views.ContentPages"
+    xmlns:mauiBehaviours="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
     xmlns:local="clr-namespace:XboxMock"
     Shell.FlyoutBehavior="Flyout"
     Title="XboxMock">
+    
+    <ContentPage.Behaviors>
+        <mauiBehaviours:StatusBarBehavior
+            StatusBarColor="Transparent"/>
+    </ContentPage.Behaviors>
 
-    <ShellContent
+    <!-- <ShellContent -->
+    <!--     Title="Home" -->
+    <!--     ContentTemplate="{DataTemplate local:MainPage}" -->
+    <!--     Route="MainPage" /> -->
+    <ShellContent 
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate pages:HomePage}"
+        Route="Home"/>
 
 </Shell>
