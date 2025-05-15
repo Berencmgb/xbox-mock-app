@@ -6,7 +6,8 @@
     xmlns:pages="clr-namespace:XboxMock.Views.ContentPages"
     xmlns:mauiBehaviours="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
     xmlns:local="clr-namespace:XboxMock"
-    Shell.FlyoutBehavior="Flyout"
+    Shell.FlyoutBehavior="Disabled"
+    NavBarHasShadow="False"
     Title="XboxMock">
     
     <ContentPage.Behaviors>
@@ -19,7 +20,6 @@
     <!--     ContentTemplate="{DataTemplate local:MainPage}" -->
     <!--     Route="MainPage" /> -->
     <ShellContent 
-        Title="Home"
         ContentTemplate="{DataTemplate pages:HomePage}"
         Route="Home"/>
 

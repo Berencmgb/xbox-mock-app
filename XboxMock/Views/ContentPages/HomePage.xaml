@@ -2,8 +2,133 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XboxMock.Views.ContentPages.HomePage">
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="XboxMock.Views.ContentPages.HomePage"
+             x:Name="Page">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView
+                x:Name="ScrollView"
+                Scrolled="ScrollView_OnScrolled"
+                VerticalScrollBarVisibility="Never">
+                <StackLayout
+                    Margin="0,110,0,0"
+                    Spacing="10">
+                    <StackLayout
+                        HeightRequest="300"
+                        BackgroundColor="DarkGreen"
+                        VerticalOptions="Start">
+                
+                    </StackLayout>
+                    <StackLayout
+                        HeightRequest="300"
+                        BackgroundColor="DarkGreen"
+                        VerticalOptions="Start">
+                
+                    </StackLayout>
+                    <StackLayout
+                        HeightRequest="300"
+                        BackgroundColor="DarkGreen"
+                        VerticalOptions="Start">
+                
+                    </StackLayout>
+                    <StackLayout
+                        HeightRequest="300"
+                        BackgroundColor="DarkGreen"
+                        VerticalOptions="Start">
+                
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Grid
+                VerticalOptions="Start"
+                HeightRequest="100"
+                BackgroundColor="{Binding NavbarColor, Source={x:Reference Page}}"
+                Padding="10">
+                <Grid
+                    VerticalOptions="End"
+                    HorizontalOptions="Fill"
+                    ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Border
+                        Grid.Column="0"
+                        StrokeThickness="0"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        BackgroundColor="Aqua">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="50"/>
+                        </Border.StrokeShape>
+                        <Image Source="Resources/Images/avatar.png"></Image>
+                    </Border>
+                    <Grid
+                        Grid.Column="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontAttributes="Bold"
+                            Text="Fruskoo"/>
+                        <StackLayout
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Spacing="10"
+                            HorizontalOptions="Fill"
+                            Orientation="Horizontal">
+                            <Label 
+                                Text="35,400"/>
+                            <Label 
+                                Text="4,330"/>
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout
+                        Grid.Column="2"
+                        Orientation="Horizontal"
+                        Spacing="10"
+                        HorizontalOptions="Center">
+                        <ImageButton
+                            Style="{StaticResource NavButton}"
+                            Source="Resources/Images/game_console.svg"
+                            Padding="6">
+                            <ImageButton.Behaviors>
+                                <toolkit:IconTintColorBehavior
+                                    TintColor="White" />
+                            </ImageButton.Behaviors>
+                        </ImageButton>
+                        <ImageButton
+                            Style="{StaticResource NavButton}"
+                            Source="Resources/Images/notification_bell_icon.svg"
+                            Padding="5">
+                            <ImageButton.Behaviors>
+                                <toolkit:IconTintColorBehavior
+                                    TintColor="White" />
+                            </ImageButton.Behaviors>
+                        </ImageButton>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -138,14 +138,24 @@
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
     </Style>
+    
+    <Style
+        x:Key="NavButton"
+        TargetType="ImageButton">
+        <Setter Property="BackgroundColor" Value="#2b2b29"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="30"/>
+        <Setter Property="Aspect" Value="AspectFit"/>
+    </Style>
 
     <Style TargetType="ImageButton">
         <Setter Property="Opacity" Value="1" />
         <Setter Property="BorderColor" Value="Transparent"/>
         <Setter Property="BorderWidth" Value="0"/>
         <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="MinimumHeightRequest" Value="44"/>
-        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="MinimumHeightRequest" Value="20"/>
+        <Setter Property="MinimumWidthRequest" Value="20"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
