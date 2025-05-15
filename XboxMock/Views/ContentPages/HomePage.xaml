@@ -3,8 +3,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:XboxMock.ViewModels.Pages"
+             xmlns:entities="clr-namespace:XboxMock.ViewModels.Entities"
              x:Class="XboxMock.Views.ContentPages.HomePage"
-             x:Name="Page">
+             x:Name="Page"
+             x:DataType="viewModels:HomePageViewModel">
     
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -21,32 +24,56 @@
                 Scrolled="ScrollView_OnScrolled"
                 VerticalScrollBarVisibility="Never">
                 <StackLayout
-                    Margin="0,110,0,0"
-                    Spacing="10">
-                    <StackLayout
-                        HeightRequest="300"
-                        BackgroundColor="DarkGreen"
-                        VerticalOptions="Start">
-                
-                    </StackLayout>
-                    <StackLayout
-                        HeightRequest="300"
-                        BackgroundColor="DarkGreen"
-                        VerticalOptions="Start">
-                
-                    </StackLayout>
-                    <StackLayout
-                        HeightRequest="300"
-                        BackgroundColor="DarkGreen"
-                        VerticalOptions="Start">
-                
-                    </StackLayout>
-                    <StackLayout
-                        HeightRequest="300"
-                        BackgroundColor="DarkGreen"
-                        VerticalOptions="Start">
-                
-                    </StackLayout>
+                    Margin="0,110,0,0">
+                    <CarouselView
+                        VerticalScrollBarVisibility="Never"
+                        HorizontalScrollBarVisibility="Never"
+                        ItemsSource="{Binding GameCards}">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate
+                                x:DataType="entities:GameCardViewModel">
+                                <Border
+                                    HeightRequest="370"
+                                    WidthRequest="370"
+                                    StrokeThickness="0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="6"/>
+                                    </Border.StrokeShape>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Source="{Binding ImageSource}"/>
+                                        <StackLayout
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill">
+                                            <StackLayout.Background>
+                                                <LinearGradientBrush EndPoint="0,0.95">
+                                                    <GradientStop Color="Transparent" Offset="0.4"/>
+                                                    <GradientStop Color="Black" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </StackLayout.Background>
+                                        </StackLayout>
+                                        <StackLayout
+                                            VerticalOptions="End"
+                                            Padding="15">
+                                            <Label 
+                                                FontSize="24"
+                                                FontAttributes="Bold"
+                                                Text="{Binding Name}"/>
+                                            <Label 
+                                                FontSize="14"
+                                                Text="{Binding Description}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
                 </StackLayout>
             </ScrollView>
             <Grid
