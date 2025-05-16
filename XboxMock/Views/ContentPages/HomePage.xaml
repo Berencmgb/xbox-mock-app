@@ -26,6 +26,7 @@
                 <StackLayout
                     Margin="0,110,0,0">
                     <CarouselView
+                        Loop="False"
                         VerticalScrollBarVisibility="Never"
                         HorizontalScrollBarVisibility="Never"
                         ItemsSource="{Binding GameCards}">
@@ -33,8 +34,8 @@
                             <DataTemplate
                                 x:DataType="entities:GameCardViewModel">
                                 <Border
-                                    HeightRequest="370"
-                                    WidthRequest="370"
+                                    HeightRequest="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=GameCardSize}"
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=GameCardSize}"
                                     StrokeThickness="0">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="6"/>

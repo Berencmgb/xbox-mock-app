@@ -32,4 +32,6 @@ public partial class HomePageViewModel : ObservableObject
             ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
         });
     }
+
+    public double GameCardSize => (Application.Current?.Windows[0]?.Width ?? 390) - 20;
 }
