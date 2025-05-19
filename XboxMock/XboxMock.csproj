@@ -78,7 +78,6 @@
 
     <ItemGroup>
       <Folder Include="Helpers\" />
-      <Folder Include="Views\ContentViews\" />
     </ItemGroup>
 
 </Project>

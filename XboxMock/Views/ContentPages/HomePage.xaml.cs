@@ -47,12 +47,12 @@ public partial class HomePage : ContentPage
 
     private void CalculateNavbarColor()
     {
-        if (ScrollView == null)
-        {
-            return;
-        }
-        
-        var opacity = (float)(ScrollView.ScrollY / _scrollAmount);
-        NavbarColor = new Color(_backgroundColor.Red, _backgroundColor.Green, _backgroundColor.Blue, opacity);
+        // if (ScrollView == null)
+        // {
+        //     return;
+        // }
+        //
+        // var opacity = (float)(ScrollView.ScrollY / _scrollAmount);
+        // NavbarColor = new Color(_backgroundColor.Red, _backgroundColor.Green, _backgroundColor.Blue, opacity);
     }
 }

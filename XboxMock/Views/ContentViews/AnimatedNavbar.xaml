@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XboxMock.Views.ContentViews.AnimatedNavbar"
+             x:Name="Page">
+    <ContentView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollView
+                x:Name="ScrollView"
+                Scrolled="ScrollView_OnScrolled">
+                <Grid
+                    x:Name="ContentWrapper"
+                    Margin="{Binding Source={x:Reference Page}, Path=MarginHeight}">
+                    <ContentView Content="{Binding Source={x:Reference Page}, Path=ScrollContent}"/>
+                </Grid>
+            </ScrollView>
+            <Grid
+                BackgroundColor="{Binding Source={x:Reference Page}, Path=NavbarColor}"
+                HeightRequest="{Binding Source={x:Reference Page}, Path=NavbarHeight}"
+                VerticalOptions="Start">
+                <ContentView Content="{Binding Source={x:Reference Page}, Path=TitleView}"/>
+            </Grid>
+        </Grid>
+    </ContentView>
+</ContentView>

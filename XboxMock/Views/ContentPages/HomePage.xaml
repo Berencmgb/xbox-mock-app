@@ -5,6 +5,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewModels="clr-namespace:XboxMock.ViewModels.Pages"
              xmlns:entities="clr-namespace:XboxMock.ViewModels.Entities"
+             xmlns:views="clr-namespace:XboxMock.Views.ContentViews"
              x:Class="XboxMock.Views.ContentPages.HomePage"
              x:Name="Page"
              x:DataType="viewModels:HomePageViewModel">
@@ -15,77 +16,17 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <ScrollView
-                x:Name="ScrollView"
-                Scrolled="ScrollView_OnScrolled"
-                VerticalScrollBarVisibility="Never">
-                <StackLayout
-                    Margin="0,110,0,0">
-                    <CarouselView
-                        Loop="False"
-                        VerticalScrollBarVisibility="Never"
-                        HorizontalScrollBarVisibility="Never"
-                        ItemsSource="{Binding GameCards}">
-                        <CarouselView.ItemTemplate>
-                            <DataTemplate
-                                x:DataType="entities:GameCardViewModel">
-                                <Border
-                                    HeightRequest="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=GameCardSize}"
-                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=GameCardSize}"
-                                    StrokeThickness="0">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="6"/>
-                                    </Border.StrokeShape>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <Image
-                                            Source="{Binding ImageSource}"/>
-                                        <StackLayout
-                                            HorizontalOptions="Fill"
-                                            VerticalOptions="Fill">
-                                            <StackLayout.Background>
-                                                <LinearGradientBrush EndPoint="0,0.95">
-                                                    <GradientStop Color="Transparent" Offset="0.4"/>
-                                                    <GradientStop Color="Black" Offset="1"/>
-                                                </LinearGradientBrush>
-                                            </StackLayout.Background>
-                                        </StackLayout>
-                                        <StackLayout
-                                            VerticalOptions="End"
-                                            Padding="15">
-                                            <Label 
-                                                FontSize="24"
-                                                FontAttributes="Bold"
-                                                Text="{Binding Name}"/>
-                                            <Label 
-                                                FontSize="14"
-                                                Text="{Binding Description}"/>
-                                        </StackLayout>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </CarouselView.ItemTemplate>
-                    </CarouselView>
-                </StackLayout>
-            </ScrollView>
-            <Grid
-                VerticalOptions="Start"
-                HeightRequest="100"
-                BackgroundColor="{Binding NavbarColor, Source={x:Reference Page}}"
-                Padding="10">
+        <views:AnimatedNavbar
+            NavbarHeight="100"
+            ScrollThreshold="100"
+            StartColor="#00161716"
+            ScrolledColor="#161716">
+            <views:AnimatedNavbar.TitleView>
                 <Grid
                     VerticalOptions="End"
                     HorizontalOptions="Fill"
-                    ColumnSpacing="10">
+                    ColumnSpacing="10"
+                    Padding="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
@@ -125,9 +66,9 @@
                             Spacing="10"
                             HorizontalOptions="Fill"
                             Orientation="Horizontal">
-                            <Label 
+                            <Label
                                 Text="35,400"/>
-                            <Label 
+                            <Label
                                 Text="4,330"/>
                         </StackLayout>
                     </Grid>
@@ -156,7 +97,120 @@
                         </ImageButton>
                     </StackLayout>
                 </Grid>
-            </Grid>
-        </Grid>
+            </views:AnimatedNavbar.TitleView>
+            <views:AnimatedNavbar.ScrollContent>
+                <StackLayout
+                    Margin="0,110,0,0"
+                    Spacing="10">
+                    <CarouselView
+                        Loop="False"
+                        VerticalScrollBarVisibility="Never"
+                        HorizontalScrollBarVisibility="Never"
+                        ItemsSource="{Binding GameCards}">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate
+                                x:DataType="entities:GameCardViewModel">
+                                <Border
+                                    HeightRequest="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=GameCardSize}"
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:HomePageViewModel}}, Path=GameCardSize}"
+                                    StrokeThickness="0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="6"/>
+                                    </Border.StrokeShape>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Image
+                                            Source="{Binding ImageSource}"/>
+                                        <StackLayout
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill">
+                                            <StackLayout.Background>
+                                                <LinearGradientBrush EndPoint="0,0.95">
+                                                    <GradientStop Color="Transparent" Offset="0.4"/>
+                                                    <GradientStop Color="Black" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </StackLayout.Background>
+                                        </StackLayout>
+                                        <StackLayout
+                                            VerticalOptions="End"
+                                            Padding="15">
+                                            <Label
+                                                FontSize="24"
+                                                FontAttributes="Bold"
+                                                Text="{Binding Name}"/>
+                                            <Label
+                                                FontSize="14"
+                                                Text="{Binding Description}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <Grid
+                        Padding="12,0,12,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontSize="20"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="Active Friends"/>
+                        <Label
+                            TextColor="DimGray"
+                            VerticalTextAlignment="Center"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="See all">
+                            <Label.GestureRecognizers>
+        
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                    <StackLayout
+                        BackgroundColor="Red"
+                        HeightRequest="350"
+                        HorizontalOptions="Fill"/>
+                    <StackLayout
+                        BackgroundColor="Red"
+                        HeightRequest="350"
+                        HorizontalOptions="Fill"/>
+                    <StackLayout
+                        BackgroundColor="Red"
+                        HeightRequest="350"
+                        HorizontalOptions="Fill"/>
+                    <StackLayout
+                        BackgroundColor="Red"
+                        HeightRequest="350"
+                        HorizontalOptions="Fill"/>
+                    <StackLayout
+                        BackgroundColor="Red"
+                        HeightRequest="350"
+                        HorizontalOptions="Fill"/>
+                    <StackLayout
+                        BackgroundColor="Red"
+                        HeightRequest="350"
+                        HorizontalOptions="Fill"/>
+                    <StackLayout
+                        BackgroundColor="Red"
+                        HeightRequest="350"
+                        HorizontalOptions="Fill"/>
+                    <StackLayout
+                        BackgroundColor="Red"
+                        HeightRequest="350"
+                        HorizontalOptions="Fill"/>
+                </StackLayout>
+            </views:AnimatedNavbar.ScrollContent>
+        </views:AnimatedNavbar>
     </ContentPage.Content>
 </ContentPage>
