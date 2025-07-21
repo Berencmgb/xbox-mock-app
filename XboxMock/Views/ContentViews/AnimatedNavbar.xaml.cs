@@ -12,6 +12,8 @@ public partial class AnimatedNavbar : ContentView
     public AnimatedNavbar()
     {
         InitializeComponent();
+        CalculateNavbarColor();
+        CalculateMarginHeight();
     }
 
     /// <summary>
@@ -53,6 +55,32 @@ public partial class AnimatedNavbar : ContentView
             typeof(AnimatedNavbar),
             0d);
 
+    public static readonly BindableProperty IsOffsetHeightProperty =
+        BindableProperty.Create(
+            nameof(IsOffsetHeight),
+            typeof(bool),
+            typeof(AnimatedNavbar),
+            true,
+            propertyChanged: IsOffsetHeight_PropertyChanged);
+
+    private static void IsOffsetHeight_PropertyChanged(BindableObject bindable,
+        object oldValue,
+        object newValue)
+    {
+        if (bindable is not AnimatedNavbar animatedNavbar)
+        {
+            return;
+        }
+
+        animatedNavbar.CalculateMarginHeight();
+    }
+
+    public bool IsOffsetHeight
+    {
+        get => (bool)GetValue(IsOffsetHeightProperty);
+        set => SetValue(IsOffsetHeightProperty, value);
+    }
+
     /// <summary>
     /// How far to scroll before the <see cref="ScrolledColor"/> is fully visible
     /// </summary>
@@ -68,7 +96,14 @@ public partial class AnimatedNavbar : ContentView
             typeof(int),
             typeof(AnimatedNavbar),
             100,
+            propertyChanging: NavbarHeight_PropertyChanging,
             propertyChanged: NavbarHeight_PropertyChanged);
+
+    private static void NavbarHeight_PropertyChanging(BindableObject bindable,
+        object oldValue,
+        object newValue)
+    {
+    }
 
     private static void NavbarHeight_PropertyChanged(BindableObject bindable,
         object oldValue,
@@ -79,7 +114,12 @@ public partial class AnimatedNavbar : ContentView
             return;
         }
 
-        animatedNavbar.MarginHeight = new Thickness(0, animatedNavbar.NavbarHeight, 0, 0);
+        animatedNavbar.CalculateMarginHeight();
+    }
+
+    public void CalculateMarginHeight()
+    {
+        MarginHeight = IsOffsetHeight ? new Thickness(0, NavbarHeight, 0, 0) : new Thickness(0, 0, 0, 0);
     }
     
     public int NavbarHeight
@@ -159,7 +199,7 @@ public partial class AnimatedNavbar : ContentView
             nameof(Intensity),
             typeof(float),
             typeof(AnimatedNavbar),
-            0);
+            0f);
 
     public float Intensity
     {

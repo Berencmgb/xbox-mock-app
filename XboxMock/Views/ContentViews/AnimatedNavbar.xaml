@@ -5,7 +5,8 @@
              x:Class="XboxMock.Views.ContentViews.AnimatedNavbar"
              x:Name="Page">
     <ContentView>
-        <Grid>
+        <Grid
+            RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -14,7 +15,7 @@
                 Scrolled="ScrollView_OnScrolled">
                 <Grid
                     x:Name="ContentWrapper"
-                    Margin="{Binding Source={x:Reference Page}, Path=MarginHeight}">
+                    Padding="{Binding Source={x:Reference Page}, Path=MarginHeight}">
                     <ContentView Content="{Binding Source={x:Reference Page}, Path=ScrollContent}"/>
                 </Grid>
             </ScrollView>

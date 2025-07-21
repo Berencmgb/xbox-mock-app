@@ -12,4 +12,7 @@ public partial class GameCardViewModel : ObservableObject
     
     [ObservableProperty]
     private string _description;
+    
+    [ObservableProperty]
+    private double _opacity = 0.0d;
 }
