@@ -121,9 +121,9 @@
                                             Opacity="{Binding Opacity}"
                                             Aspect="AspectFill"
                                             Source="{Binding ImageSource}">
-                                            <Image.Behaviors>
-                                                <customBehaviors:BlurBehavior Radius="90"/>
-                                            </Image.Behaviors>
+                                            <!-- <Image.Behaviors> -->
+                                            <!--     <customBehaviors:BlurBehavior Radius="90"/> -->
+                                            <!-- </Image.Behaviors> -->
                                         </Image>
                                         <StackLayout
                                             Grid.Row="0">

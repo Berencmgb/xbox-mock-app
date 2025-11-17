@@ -58,28 +58,47 @@ public partial class HomePage : ContentPage
         
         double itemWidth = carouselView.Width;
         double viewportCenter = itemWidth / 2;
+
+        var bufferAfter = e.LastVisibleItemIndex + 1;
+        var bufferAfterElement = _viewModel.GameCards.ElementAtOrDefault(bufferAfter);
+        if (bufferAfterElement != null)
+        {
+            bufferAfterElement.Opacity = 0;
+        }
         
         // Only affect visible items
-        for (int i = e.FirstVisibleItemIndex; i <= e.LastVisibleItemIndex; i++)
+        for (var i = e.FirstVisibleItemIndex; i <= e.LastVisibleItemIndex; i++)
         {
             if (i < 0 || i >= _viewModel.GameCards.Count)
+            {
                 continue;
+            }
         
+            // var gameCard = _viewModel.GameCards[i];
+            //
+            // // Center of this item
+            // var itemCenter = (i * itemWidth) + (itemWidth / 2);
+            // itemCenter -= e.HorizontalDelta;
+            //
+            // // Distance from center of screen
+            // var distance = Math.Abs(viewportCenter - itemCenter);
+            //
+            // // Normalize to range [0, 1], 0 = fully visible center, 1 = one item away
+            // var normalized = Math.Min(1, distance / itemWidth);
+            //
+            // // Invert and clamp opacity (you can tweak min/max fade)
+            // var opacity = normalized; // fades to 0.5
+            //
+            // gameCard.Opacity = opacity;
+            
             var gameCard = _viewModel.GameCards[i];
-        
-            // Center of this item
-            double itemCenter = (i * itemWidth) + (itemWidth / 2);
-        
-            // Distance from center of screen
-            double distance = Math.Abs(viewportCenter - itemCenter);
-        
-            // Normalize to range [0, 1], 0 = fully visible center, 1 = one item away
-            double normalized = Math.Min(1, distance / itemWidth);
-        
-            // Invert and clamp opacity (you can tweak min/max fade)
-            double opacity = 1.0 - (normalized * 0.5); // fades to 0.5
-        
-            gameCard.Opacity = opacity;
+            var widthOffset = itemWidth * i;
+            Debug.WriteLine($"Width Offset: {widthOffset}");
+            
+            // for the previous item, the closer we get to scrolling the width, the closer we get to 0
+            // for the next item, the closer we get to scrolling the width. the closer we get to 1
+
+            break;
         }
         
         //var carouselView = (CarouselView)sender;

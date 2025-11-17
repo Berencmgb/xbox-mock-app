@@ -12,7 +12,7 @@ public partial class HomePageViewModel : ObservableObject
 
     [ObservableProperty]
     private bool _isLoading = false;
-    
+
     [ObservableProperty]
     private int _testInt = 0;
 
@@ -25,109 +25,119 @@ public partial class HomePageViewModel : ObservableObject
     public async Task RefreshDataAsync()
     {
         IsLoading = true;
-        
-        await Task.Delay(5000);
-        
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Fall Guys",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/fall_guys.jpg",
-        });
-        
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Expedition 33",
-            Description = "Set sail on a new expedition.",
-            ImageSource = "Resources/Images/Games/expedition_33.jpg",
-        });
 
-        GameCards.Add(new GameCardViewModel
+        var result = await Task.Run(() =>
         {
-            Name = "TES IV: Oblivion Remastered",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
-        });
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Fall Guys",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/fall_guys.jpg",
+            var gameCards = new List<GameCardViewModel> { };
+
+            for (var i = 0; i < 1; i++)
+            {
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Fall Guys",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/fall_guys.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Expedition 33",
+                    Description = "Set sail on a new expedition.",
+                    ImageSource = "Resources/Images/Games/expedition_33.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "TES IV: Oblivion Remastered",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
+                });
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Fall Guys",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/fall_guys.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Expedition 33",
+                    Description = "Set sail on a new expedition.",
+                    ImageSource = "Resources/Images/Games/expedition_33.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "TES IV: Oblivion Remastered",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
+                });
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Fall Guys",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/fall_guys.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Expedition 33",
+                    Description = "Set sail on a new expedition.",
+                    ImageSource = "Resources/Images/Games/expedition_33.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "TES IV: Oblivion Remastered",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
+                });
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Fall Guys",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/fall_guys.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Expedition 33",
+                    Description = "Set sail on a new expedition.",
+                    ImageSource = "Resources/Images/Games/expedition_33.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "TES IV: Oblivion Remastered",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
+                });
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Fall Guys",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/fall_guys.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "Expedition 33",
+                    Description = "Set sail on a new expedition.",
+                    ImageSource = "Resources/Images/Games/expedition_33.jpg",
+                });
+
+                gameCards.Add(new GameCardViewModel
+                {
+                    Name = "TES IV: Oblivion Remastered",
+                    Description = "Available now.",
+                    ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
+                });
+            }
+
+            return gameCards;
         });
         
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Expedition 33",
-            Description = "Set sail on a new expedition.",
-            ImageSource = "Resources/Images/Games/expedition_33.jpg",
-        });
-
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "TES IV: Oblivion Remastered",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
-        });
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Fall Guys",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/fall_guys.jpg",
-        });
-        
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Expedition 33",
-            Description = "Set sail on a new expedition.",
-            ImageSource = "Resources/Images/Games/expedition_33.jpg",
-        });
-
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "TES IV: Oblivion Remastered",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
-        });
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Fall Guys",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/fall_guys.jpg",
-        });
-        
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Expedition 33",
-            Description = "Set sail on a new expedition.",
-            ImageSource = "Resources/Images/Games/expedition_33.jpg",
-        });
-
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "TES IV: Oblivion Remastered",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
-        });
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Fall Guys",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/fall_guys.jpg",
-        });
-        
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "Expedition 33",
-            Description = "Set sail on a new expedition.",
-            ImageSource = "Resources/Images/Games/expedition_33.jpg",
-        });
-
-        GameCards.Add(new GameCardViewModel
-        {
-            Name = "TES IV: Oblivion Remastered",
-            Description = "Available now.",
-            ImageSource = "Resources/Images/Games/tes_oblivion.jpg",
-        });
+        GameCards = new ObservableCollection<GameCardViewModel>(result);
 
         IsLoading = false;
     }

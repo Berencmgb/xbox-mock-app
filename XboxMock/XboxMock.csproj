@@ -45,6 +45,10 @@
     <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
         <AndroidEnableProfiler>True</AndroidEnableProfiler>
     </PropertyGroup>
+    
+    <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android' and '$(Configuration)' == 'Release'">
+        <TrimMode>full</TrimMode>
+    </PropertyGroup>
 
     <ItemGroup>
         <!-- App Icon -->
