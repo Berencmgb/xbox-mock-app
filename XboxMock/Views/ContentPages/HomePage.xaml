@@ -19,8 +19,8 @@
 
     <ContentPage.Content>
         <views:AnimatedNavbar
-            NavbarHeight="100"
-            ScrollThreshold="100"
+            NavbarHeight="{Binding Source={x:Static viewModels:HomePageViewModel.NavbarHeight}}"
+            ScrollThreshold="{Binding Source={x:Static viewModels:HomePageViewModel.NavbarHeight}}"
             IsOffsetHeight="False"
             StartColor="#00161716"
             ScrolledColor="#161716">
@@ -121,9 +121,9 @@
                                             Opacity="{Binding Opacity}"
                                             Aspect="AspectFill"
                                             Source="{Binding ImageSource}">
-                                            <!-- <Image.Behaviors> -->
-                                            <!--     <customBehaviors:BlurBehavior Radius="90"/> -->
-                                            <!-- </Image.Behaviors> -->
+                                            <Image.Behaviors>
+                                                <customBehaviors:BlurBehavior Radius="90"/>
+                                            </Image.Behaviors>
                                         </Image>
                                         <StackLayout
                                             Grid.Row="0">
@@ -140,7 +140,7 @@
                         </Grid>
                         <!-- HeightRequest="{Binding Source={x:RelativeSource AncestorType={x:Type Window}}, Path=Width}" -->
                         <CarouselView
-                            Margin="0,100,0,0"
+                            Margin="{Binding Margin}"
                             IsScrollAnimated="True"
                             IsVisible="True"
                             Loop="False"

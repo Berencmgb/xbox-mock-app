@@ -7,6 +7,8 @@ namespace XboxMock.ViewModels.Pages;
 
 public partial class HomePageViewModel : ObservableObject
 {
+    public const int NavbarHeight = 130;
+    
     [ObservableProperty]
     private ObservableCollection<GameCardViewModel> _gameCards = new ObservableCollection<GameCardViewModel> { };
 
@@ -15,10 +17,9 @@ public partial class HomePageViewModel : ObservableObject
 
     [ObservableProperty]
     private int _testInt = 0;
-
-    public HomePageViewModel()
-    {
-    }
+    
+    [ObservableProperty]
+    private Thickness _margin = new Thickness(0, NavbarHeight, 0, 0);
 
     public double GameCardSize => (Application.Current?.Windows[0]?.Width ?? 390) - 20;
 
@@ -138,6 +139,8 @@ public partial class HomePageViewModel : ObservableObject
         });
         
         GameCards = new ObservableCollection<GameCardViewModel>(result);
+
+        GameCards[0].Opacity = 1;
 
         IsLoading = false;
     }
